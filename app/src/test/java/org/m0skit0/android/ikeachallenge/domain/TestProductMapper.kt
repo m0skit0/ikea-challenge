@@ -1,7 +1,6 @@
 package org.m0skit0.android.ikeachallenge.domain
 
 import arrow.core.Option
-import arrow.core.getOrElse
 import arrow.core.toOption
 import io.kotlintest.assertions.arrow.option.shouldBeSome
 import io.kotlintest.matchers.types.shouldBeNull
@@ -19,8 +18,8 @@ class TestProductMapper : FreeSpec() {
             val chairInfo = mapOf("material" to "wood with cover", "color" to "white").toChairInfo()
             with (chairInfo) {
                 shouldBeSome()
-                getOrElse { null }?.material shouldBe Option.just("wood with cover")
-                getOrElse { null }?.color shouldBe Option.just("white")
+                orNull()?.material shouldBe Option.just("wood with cover")
+                orNull()?.color shouldBe Option.just("white")
             }
 
         }
@@ -29,8 +28,8 @@ class TestProductMapper : FreeSpec() {
             val chairInfo = mapOf<String, String>().toChairInfo()
             with (chairInfo) {
                 shouldBeSome()
-                getOrElse { null }?.material shouldBe Option.empty()
-                getOrElse { null }?.color shouldBe Option.empty()
+                orNull()?.material shouldBe Option.empty()
+                orNull()?.color shouldBe Option.empty()
             }
         }
 
@@ -38,8 +37,8 @@ class TestProductMapper : FreeSpec() {
             val chairInfo = mapOf("numberOfSeats" to "2", "color" to "white").toChairInfo()
             with (chairInfo) {
                 shouldBeSome()
-                getOrElse { null }?.material shouldBe Option.empty()
-                getOrElse { null }?.color shouldBe Option.just("white")
+                orNull()?.material shouldBe Option.empty()
+                orNull()?.color shouldBe Option.just("white")
             }
         }
 
@@ -47,8 +46,8 @@ class TestProductMapper : FreeSpec() {
             val chairInfo = mapOf("numberOfSeats" to "2", "foo" to "bar").toChairInfo()
             with (chairInfo) {
                 shouldBeSome()
-                getOrElse { null }?.material shouldBe Option.empty()
-                getOrElse { null }?.color shouldBe Option.empty()
+                orNull()?.material shouldBe Option.empty()
+                orNull()?.color shouldBe Option.empty()
             }
         }
 
@@ -56,8 +55,8 @@ class TestProductMapper : FreeSpec() {
             val couchInfo = mapOf("numberOfSeats" to "2", "color" to "white").toCouchInfo()
             with (couchInfo) {
                 shouldBeSome()
-                getOrElse { null }?.numberOfSeats shouldBe Option.just("2")
-                getOrElse { null }?.color shouldBe Option.just("white")
+                orNull()?.numberOfSeats shouldBe Option.just("2")
+                orNull()?.color shouldBe Option.just("white")
             }
         }
 
@@ -65,8 +64,8 @@ class TestProductMapper : FreeSpec() {
             val couchInfo = mapOf<String, String>().toCouchInfo()
             with (couchInfo) {
                 shouldBeSome()
-                getOrElse { null }?.numberOfSeats shouldBe Option.empty()
-                getOrElse { null }?.color shouldBe Option.empty()
+                orNull()?.numberOfSeats shouldBe Option.empty()
+                orNull()?.color shouldBe Option.empty()
             }
         }
 
@@ -74,8 +73,8 @@ class TestProductMapper : FreeSpec() {
             val couchInfo = mapOf("material" to "wood with cover", "color" to "white").toCouchInfo()
             with (couchInfo) {
                 shouldBeSome()
-                getOrElse { null }?.numberOfSeats shouldBe Option.empty()
-                getOrElse { null }?.color shouldBe Option.just("white")
+                orNull()?.numberOfSeats shouldBe Option.empty()
+                orNull()?.color shouldBe Option.just("white")
             }
         }
 
@@ -83,8 +82,8 @@ class TestProductMapper : FreeSpec() {
             val couchInfo = mapOf("material" to "wood with cover", "foo" to "bar").toCouchInfo()
             with (couchInfo) {
                 shouldBeSome()
-                getOrElse { null }?.numberOfSeats shouldBe Option.empty()
-                getOrElse { null }?.color shouldBe Option.empty()
+                orNull()?.numberOfSeats shouldBe Option.empty()
+                orNull()?.color shouldBe Option.empty()
             }
         }
 
@@ -98,7 +97,7 @@ class TestProductMapper : FreeSpec() {
                 Option.just("chair")
             )
             dto.toProductType()?.run {
-                (info.getOrElse { null } as? ChairInfo)?.let {
+                (info.orNull() as? ChairInfo)?.let {
                     it.color shouldBeSome "white"
                     it.material shouldBeSome "wood with cover"
                 } ?: shouldNotBeCalled()

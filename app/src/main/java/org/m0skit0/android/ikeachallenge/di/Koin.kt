@@ -12,6 +12,8 @@ import org.m0skit0.android.ikeachallenge.data.api.OptionTypeAdapterFactory
 import org.m0skit0.android.ikeachallenge.data.api.ProductApi
 import org.m0skit0.android.ikeachallenge.data.repository.ProductRepositoryImpl
 import org.m0skit0.android.ikeachallenge.domain.ProductRepository
+import org.m0skit0.android.ikeachallenge.usecase.GetProductsUseCase
+import org.m0skit0.android.ikeachallenge.usecase.GetProductsUseCaseImpl
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -35,7 +37,11 @@ private val repositoryModule = module {
     single<ProductRepository> { ProductRepositoryImpl() }
 }
 
-private val modules = listOf(dataModule, repositoryModule)
+private val useCaseModule = module {
+    single<GetProductsUseCase> { GetProductsUseCaseImpl() }
+}
+
+private val modules = listOf(dataModule, repositoryModule, useCaseModule)
 
 internal fun Application.initializeKoin() {
     startKoin {

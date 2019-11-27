@@ -3,19 +3,19 @@ package org.m0skit0.android.ikeachallenge.data.api
 import arrow.core.Option
 
 internal data class ProductsDto(
-    val products: List<Product> = emptyList()
+    val products: Option<List<ProductDto>> = Option.empty()
 )
 
-internal data class Product(
+internal data class ProductDto(
     val id: Option<String> = Option.empty(),
     val imageUrl: Option<String> = Option.empty(),
-    val info: Map<String, String> = mapOf(),
+    val info: Option<Map<String, String>> = Option.empty(),
     val name: Option<String> = Option.empty(),
-    val price: Option<Price> = Option.empty(),
+    val price: Option<PriceDto> = Option.empty(),
     val type: Option<String> = Option.empty()
 )
 
-internal data class Price(
+internal data class PriceDto(
     val currency: Option<String> = Option.empty(),
     val value: Option<Int> = Option.empty()
 )

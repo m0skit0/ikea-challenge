@@ -1,7 +1,6 @@
 {
   "products": [
     {
-      "id": "1",
       "name": "Henriksdal",
       "price": {
         "value": 499,
@@ -25,7 +24,6 @@
         "numberOfSeats": 4,
         "color": "beige"
       },
-      "type": "couch",
       "imageUrl": "https://shop.static.ingka.ikea.com/PIAimages/0667779_PE714073_S4.JPG"
     }
   ]

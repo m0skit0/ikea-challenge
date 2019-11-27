@@ -2,7 +2,7 @@
   "products": [
     {
       "id": "1",
-      "name": "Henriksdal",
+      "name": null,
       "price": {
         "value": 499,
         "currency": "kr"
@@ -17,10 +17,7 @@
     {
       "id": "2",
       "name": "Lidhult",
-      "price": {
-        "value": 1035,
-        "currency": "kr"
-      },
+      "price": null,
       "info": {
         "numberOfSeats": 4,
         "color": "beige"

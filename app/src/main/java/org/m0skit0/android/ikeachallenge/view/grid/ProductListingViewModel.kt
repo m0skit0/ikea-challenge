@@ -1,4 +1,4 @@
-package org.m0skit0.android.ikeachallenge.view
+package org.m0skit0.android.ikeachallenge.view.grid
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -14,7 +14,7 @@ import org.m0skit0.android.ikeachallenge.di.NAMED_MUTABLE_LIST_PRODUCTS
 import org.m0skit0.android.ikeachallenge.domain.Product
 import org.m0skit0.android.ikeachallenge.usecase.GetProductsUseCase
 
-internal class ProductGridViewModel : ViewModel(), CoroutineScope by CoroutineScope(Dispatchers.IO), KoinComponent {
+internal class ProductListingViewModel : ViewModel(), CoroutineScope by CoroutineScope(Dispatchers.IO), KoinComponent {
 
     private val getProductsUseCase: GetProductsUseCase by inject()
     private var productList: List<Product> = emptyList()

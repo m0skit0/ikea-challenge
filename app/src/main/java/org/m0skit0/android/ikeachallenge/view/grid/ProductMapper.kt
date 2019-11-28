@@ -1,4 +1,4 @@
-package org.m0skit0.android.ikeachallenge.view
+package org.m0skit0.android.ikeachallenge.view.grid
 
 import org.m0skit0.android.ikeachallenge.data.api.PriceDto
 import org.m0skit0.android.ikeachallenge.domain.Product

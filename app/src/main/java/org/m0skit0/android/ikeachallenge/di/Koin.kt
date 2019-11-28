@@ -6,6 +6,7 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.TypeAdapterFactory
 import org.koin.android.ext.koin.androidContext
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -21,6 +22,8 @@ import org.m0skit0.android.ikeachallenge.log.Logger
 import org.m0skit0.android.ikeachallenge.usecase.GetProductsUseCase
 import org.m0skit0.android.ikeachallenge.usecase.GetProductsUseCaseImpl
 import org.m0skit0.android.ikeachallenge.util.asAsset
+import org.m0skit0.android.ikeachallenge.view.grid.ProductGridFragment
+import org.m0skit0.android.ikeachallenge.view.grid.ProductListingViewModel
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.InputStream
@@ -75,6 +78,10 @@ private val viewModelModule = module {
     factory(NAMED_MUTABLE_LIST_PRODUCTS) { MutableLiveData<List<Product>>() }
     factory(NAMED_MUTABLE_BOOLEAN) { MutableLiveData<Boolean>() }
     factory(NAMED_MUTABLE_ERROR) { MutableLiveData<Throwable>() }
+
+    scope(named<ProductGridFragment>()) {
+        viewModel { ProductListingViewModel() }
+    }
 }
 
 private val modules = listOf(utilsModule, dataModule, repositoryModule, useCaseModule, viewModelModule)

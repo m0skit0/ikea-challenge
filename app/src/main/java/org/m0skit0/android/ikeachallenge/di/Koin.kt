@@ -5,12 +5,14 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.TypeAdapterFactory
 import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.GlobalContext
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 import org.m0skit0.android.ikeachallenge.BuildConfig
 import org.m0skit0.android.ikeachallenge.data.api.OptionTypeAdapterFactory
 import org.m0skit0.android.ikeachallenge.data.api.ProductApi
 import org.m0skit0.android.ikeachallenge.data.repository.ProductRepositoryImpl
+import org.m0skit0.android.ikeachallenge.data.repository.ProductRepositoryMock
 import org.m0skit0.android.ikeachallenge.domain.ProductRepository
 import org.m0skit0.android.ikeachallenge.usecase.GetProductsUseCase
 import org.m0skit0.android.ikeachallenge.usecase.GetProductsUseCaseImpl
@@ -34,7 +36,13 @@ private val dataModule = module {
 }
 
 private val repositoryModule = module {
-    single<ProductRepository> { ProductRepositoryImpl() }
+    single<ProductRepository> {
+        if (BuildConfig.MOCK_REPOSITORY) {
+            ProductRepositoryMock()
+        } else {
+            ProductRepositoryImpl()
+        }
+    }
 }
 
 private val useCaseModule = module {

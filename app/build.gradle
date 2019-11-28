@@ -23,6 +23,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "version"
+    productFlavors {
+        mock {
+            buildConfigField("Boolean", "MOCK_REPOSITORY", 'true')
+        }
+        prod {
+            buildConfigField("Boolean", "MOCK_REPOSITORY", 'false')
+        }
+    }
 }
 
 dependencies {

@@ -83,7 +83,7 @@ class TestProductsDto : FreeSpec(), KoinTest {
                         size shouldBe 2
                         map { it.name } shouldBe listOf(Option.empty(), Option.just("Lidhult"))
                         map { product -> product.price.flatMap { it.value } } shouldBe
-                                listOf(Option.just(499), Option.empty())
+                                listOf(Option.just(499.0), Option.empty())
                     }
                 }
             }

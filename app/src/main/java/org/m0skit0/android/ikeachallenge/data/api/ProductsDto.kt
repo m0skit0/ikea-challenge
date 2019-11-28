@@ -17,5 +17,5 @@ internal data class ProductDto(
 
 internal data class PriceDto(
     val currency: Option<String> = Option.empty(),
-    val value: Option<Int> = Option.empty()
+    val value: Option<Double> = Option.empty()
 )

@@ -93,7 +93,7 @@ class TestProductMapper : FreeSpec() {
                 Option.just("someUrl"),
                 mapOf("material" to "wood with cover", "color" to "white").toOption(),
                 Option.just("foo"),
-                PriceDto("kr".toOption(), 1.toOption()).toOption(),
+                PriceDto("kr".toOption(), 1.0.toOption()).toOption(),
                 Option.just("chair")
             )
             dto.toProductType()?.run {
@@ -110,7 +110,7 @@ class TestProductMapper : FreeSpec() {
                 Option.just("someUrl"),
                 mapOf("material" to "wood with cover", "color" to "white").toOption(),
                 Option.just("foo"),
-                PriceDto("kr".toOption(), 1.toOption()).toOption(),
+                PriceDto("kr".toOption(), 1.0.toOption()).toOption(),
                 Option.empty()
             )
             dto.toProductType().shouldBeNull()
@@ -122,7 +122,7 @@ class TestProductMapper : FreeSpec() {
                 Option.just("someUrl"),
                 Option.empty(),
                 Option.just("foo"),
-                PriceDto("kr".toOption(), 1.toOption()).toOption(),
+                PriceDto("kr".toOption(), 1.0.toOption()).toOption(),
                 Option.just("chair")
             )
             dto.toProductType().shouldNotBeNull()
@@ -134,7 +134,7 @@ class TestProductMapper : FreeSpec() {
                 Option.just("someUrl"),
                 mapOf<String, String>().toOption(),
                 Option.just("foo"),
-                PriceDto("kr".toOption(), 1.toOption()).toOption(),
+                PriceDto("kr".toOption(), 1.0.toOption()).toOption(),
                 Option.just("chair")
             )
             dto.toProductType().shouldNotBeNull()

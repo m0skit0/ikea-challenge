@@ -15,27 +15,18 @@ import org.koin.core.context.stopKoin
 import org.koin.dsl.module
 import org.koin.test.KoinTest
 import org.koin.test.get
+import org.m0skit0.android.ikeachallenge.KoinFreeSpec
 import org.m0skit0.android.ikeachallenge.shouldNotBeCalled
 
-class TestProductsDto : FreeSpec(), KoinTest {
+class TestProductsDto : KoinFreeSpec() {
 
-    private val module = module {
+    override val module = module {
         single<TypeAdapterFactory> { OptionTypeAdapterFactory() }
         single<Gson> {
             GsonBuilder()
                 .registerTypeAdapterFactory(get())
                 .create()
         }
-    }
-
-    override fun beforeTest(testCase: TestCase) {
-        startKoin {
-            modules(module)
-        }
-    }
-
-    override fun afterTest(testCase: TestCase, result: TestResult) {
-        stopKoin()
     }
 
     init {

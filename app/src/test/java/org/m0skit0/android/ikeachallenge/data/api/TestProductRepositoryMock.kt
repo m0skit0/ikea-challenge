@@ -3,23 +3,20 @@ package org.m0skit0.android.ikeachallenge.data.api
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.TypeAdapterFactory
-import io.kotlintest.TestCase
-import io.kotlintest.TestResult
-import io.kotlintest.matchers.collections.shouldNotBeEmpty
+import io.kotlintest.assertions.arrow.either.shouldBeLeftOfType
 import io.kotlintest.shouldBe
-import io.kotlintest.specs.FreeSpec
-import org.koin.core.context.startKoin
-import org.koin.core.context.stopKoin
+import org.koin.core.context.loadKoinModules
 import org.koin.dsl.module
-import org.koin.test.KoinTest
+import org.m0skit0.android.ikeachallenge.KoinFreeSpec
 import org.m0skit0.android.ikeachallenge.data.repository.ProductRepositoryMock
 import org.m0skit0.android.ikeachallenge.di.NAMED_MOCK_PRODUCTS_PROVIDER
 import org.m0skit0.android.ikeachallenge.shouldNotBeCalled
+import java.io.IOException
 import java.io.InputStream
 
-class TestProductRepositoryMock : FreeSpec(), KoinTest {
+class TestProductRepositoryMock : KoinFreeSpec() {
 
-    private val module = module {
+    override val module = module {
         single<() -> InputStream>(NAMED_MOCK_PRODUCTS_PROVIDER) {
             { javaClass.getResourceAsStream("/products-mock.json")!! }
         }
@@ -31,16 +28,6 @@ class TestProductRepositoryMock : FreeSpec(), KoinTest {
         }
     }
 
-    override fun beforeTest(testCase: TestCase) {
-        startKoin {
-            modules(module)
-        }
-    }
-
-    override fun afterTest(testCase: TestCase, result: TestResult) {
-        stopKoin()
-    }
-
     init {
         "when mock reads json should return product list" {
             ProductRepositoryMock().getProducts().attempt().unsafeRunSync().fold({ shouldNotBeCalled() }) {
@@ -48,6 +35,17 @@ class TestProductRepositoryMock : FreeSpec(), KoinTest {
                     size shouldBe 14
                 }
             }
+        }
+
+        "when mock error should return error" {
+            loadKoinModules(
+                module {
+                    single<() -> InputStream>(NAMED_MOCK_PRODUCTS_PROVIDER, override = true) {
+                        { throw IOException() }
+                    }
+                }
+            )
+            ProductRepositoryMock().getProducts().attempt().unsafeRunSync().shouldBeLeftOfType<IOException>()
         }
     }
 }

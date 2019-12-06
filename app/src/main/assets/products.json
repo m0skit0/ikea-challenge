@@ -24,8 +24,7 @@
         "numberOfSeats": 4,
         "color": "beige"
       },
-      "type": "couch",
-      "imageUrl": "https://shop.static.ingka.ikea.com/PIAimages/0667779_PE714073_S4.JPG"
+      "type": "couch"
     },
     {
       "id": "3",

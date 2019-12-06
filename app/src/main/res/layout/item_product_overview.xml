@@ -8,9 +8,10 @@
 
     <ImageView
         android:id="@+id/imageProduct"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/item_image_width"
+        android:layout_height="@dimen/item_image_height"
         android:src="@drawable/ic_empty_image"
+        android:layout_gravity="center_horizontal"
         tools:ignore="ContentDescription"
         android:padding="@dimen/item_image_padding"/>
 
@@ -19,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_gravity="center_horizontal"
         android:padding="@dimen/item_name_padding"
         tools:text="Eyjafjallajökull"/>
 
@@ -27,6 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_gravity="center_horizontal"
         android:padding="@dimen/item_price_padding"
         tools:text="1000 kr" />
 </LinearLayout>

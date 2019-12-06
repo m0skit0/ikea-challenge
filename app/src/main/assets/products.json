@@ -11,8 +11,7 @@
         "material": "wood with cover",
         "color": "white"
       },
-      "type": "chair",
-      "imageUrl": "https://shop.static.ingka.ikea.com/PIAimages/0462849_PE608354_S4.JPG"
+      "type": "chair"
     },
     {
       "id": "2",
@@ -81,8 +80,7 @@
         "numberOfSeats": 5,
         "color": "black"
       },
-      "type": "couch",
-      "imageUrl": "https://shop.static.ingka.ikea.com/PIAimages/0630092_PE694645_S4.JPG"
+      "type": "couch"
     },
     {
       "id": "7",
@@ -179,8 +177,7 @@
         "material": "plastic",
         "color": "white"
       },
-      "type": "chair",
-      "imageUrl": "https://shop.static.ingka.ikea.com/PIAimages/0728156_PE736116_S4.JPG"
+      "type": "chair"
     },
     {
       "id": "14",

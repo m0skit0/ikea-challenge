@@ -18,7 +18,7 @@ internal class ProductGridAdapter : RecyclerView.Adapter<ProductGridAdapter.View
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        LayoutInflater.from(parent.context).inflate(R.layout.item_product_overview, parent).run {
+        LayoutInflater.from(parent.context).inflate(R.layout.item_product_overview, parent, false).run {
             ViewHolder(this)
         }
 

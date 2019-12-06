@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
     app:startDestination="@id/productGridFragment">
 
     <fragment
         android:id="@+id/productGridFragment"
         android:name="org.m0skit0.android.ikeachallenge.view.grid.ProductGridFragment"
-        android:label="ProductGridFragment" >
+        android:label="ProductGridFragment">
         <action
             android:id="@+id/action_productGridFragment_to_loadingDialogFragment"
             app:destination="@id/loadingDialogFragment" />
@@ -14,11 +15,11 @@
             android:id="@+id/action_productGridFragment_to_errorDialogFragment"
             app:destination="@id/errorDialogFragment" />
     </fragment>
-    <fragment
+    <dialog
         android:id="@+id/loadingDialogFragment"
         android:name="org.m0skit0.android.ikeachallenge.view.LoadingDialogFragment"
         android:label="LoadingDialogFragment" />
-    <fragment
+    <dialog
         android:id="@+id/errorDialogFragment"
         android:name="org.m0skit0.android.ikeachallenge.view.ErrorDialogFragment"
         android:label="ErrorDialogFragment" />

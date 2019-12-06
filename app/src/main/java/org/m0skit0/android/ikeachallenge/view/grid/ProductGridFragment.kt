@@ -20,7 +20,7 @@ internal class ProductGridFragment : Fragment() {
     private val productAdapter = ProductGridAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.fragment_product_grid, null).apply {
+        inflater.inflate(R.layout.fragment_product_grid, container, false).apply {
             productGridRecyclerView = findViewById<RecyclerView>(R.id.recycler_products).apply {
                 adapter = productAdapter
             }
@@ -54,8 +54,7 @@ internal class ProductGridFragment : Fragment() {
     }
 
     private fun showError(error: Throwable) {
-        val bundle =
-            ErrorDialogFragment.bundle(error)
+        val bundle = ErrorDialogFragment.bundle(error)
         findNavController().navigate(R.id.errorDialogFragment, bundle)
     }
 }

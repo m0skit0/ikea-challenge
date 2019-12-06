@@ -13,14 +13,14 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_empty_image"
         tools:ignore="ContentDescription"
-        android:padding="5dp"/>
+        android:padding="@dimen/item_image_padding"/>
 
     <TextView
         android:id="@+id/textProductName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="5dp"
+        android:padding="@dimen/item_name_padding"
         tools:text="Eyjafjallajökull"/>
 
     <TextView
@@ -28,6 +28,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="5dp"
+        android:padding="@dimen/item_price_padding"
         tools:text="1000 kr" />
 </LinearLayout>

@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="20dp">
 
     <ImageView
         android:id="@+id/imageProduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_empty_image" />
+        app:srcCompat="@drawable/ic_empty_image"
+        tools:ignore="ContentDescription"
+        android:padding="5dp"/>
 
     <TextView
         android:id="@+id/textProductName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:padding="5dp"
         tools:text="Eyjafjallajökull"/>
 
     <TextView
@@ -24,5 +28,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:padding="5dp"
         tools:text="1000 kr" />
 </LinearLayout>

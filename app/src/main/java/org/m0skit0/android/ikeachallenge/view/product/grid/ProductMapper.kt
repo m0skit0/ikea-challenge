@@ -1,4 +1,4 @@
-package org.m0skit0.android.ikeachallenge.view.grid
+package org.m0skit0.android.ikeachallenge.view.product.grid
 
 import arrow.core.Option
 import org.m0skit0.android.ikeachallenge.data.api.PriceDto
@@ -14,7 +14,6 @@ internal fun Product.toProductOverview(): ProductOverview? {
 }
 
 internal fun PriceDto.toPriceOverview(): String = "${value.toPriceOverview()} ${currency.toCurrencyOverview()}"
-
 private fun Option<Double>.toPriceOverview() = fold({ "???" }) { "%.2f".format(it) }
 private fun Option<String>.toCurrencyOverview() = fold({ "???" }) { it }
 

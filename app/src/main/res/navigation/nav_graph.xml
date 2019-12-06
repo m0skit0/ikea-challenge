@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/productGridFragment"
-        android:name="org.m0skit0.android.ikeachallenge.view.grid.ProductGridFragment"
+        android:name="org.m0skit0.android.ikeachallenge.view.product.grid.ProductGridFragment"
         android:label="ProductGridFragment">
         <action
             android:id="@+id/action_productGridFragment_to_loadingDialogFragment"

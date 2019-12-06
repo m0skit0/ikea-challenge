@@ -1,4 +1,4 @@
-package org.m0skit0.android.ikeachallenge.view.grid
+package org.m0skit0.android.ikeachallenge.view.product.grid
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -34,7 +34,7 @@ internal class ProductListingViewModel : ViewModel(), CoroutineScope by Coroutin
     private fun getProducts() {
         mutableIsLoading.postValue(true)
         launch {
-            getProductsUseCase.invoke().fold({
+            getProductsUseCase().fold({
                 mutableError.postValue(it)
             }) {
                 productList = it

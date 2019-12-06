@@ -1,4 +1,4 @@
-package org.m0skit0.android.ikeachallenge.view.grid
+package org.m0skit0.android.ikeachallenge.view.product.grid
 
 import android.os.Bundle
 import android.view.LayoutInflater

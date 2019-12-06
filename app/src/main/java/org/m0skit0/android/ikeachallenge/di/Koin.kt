@@ -19,11 +19,13 @@ import org.m0skit0.android.ikeachallenge.domain.Product
 import org.m0skit0.android.ikeachallenge.domain.ProductRepository
 import org.m0skit0.android.ikeachallenge.log.AndroidLogger
 import org.m0skit0.android.ikeachallenge.log.Logger
+import org.m0skit0.android.ikeachallenge.usecase.GetProductUseCase
+import org.m0skit0.android.ikeachallenge.usecase.GetProductUseCaseImpl
 import org.m0skit0.android.ikeachallenge.usecase.GetProductsUseCase
 import org.m0skit0.android.ikeachallenge.usecase.GetProductsUseCaseImpl
 import org.m0skit0.android.ikeachallenge.util.asAsset
-import org.m0skit0.android.ikeachallenge.view.grid.ProductGridFragment
-import org.m0skit0.android.ikeachallenge.view.grid.ProductListingViewModel
+import org.m0skit0.android.ikeachallenge.view.product.grid.ProductGridFragment
+import org.m0skit0.android.ikeachallenge.view.product.grid.ProductListingViewModel
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.InputStream
@@ -68,6 +70,7 @@ private val repositoryModule = module {
 
 private val useCaseModule = module {
     single<GetProductsUseCase> { GetProductsUseCaseImpl() }
+    single<GetProductUseCase> { GetProductUseCaseImpl() }
 }
 
 internal val NAMED_MUTABLE_LIST_PRODUCTS = named("NAMED_MUTABLE_LIST_PRODUCTS")

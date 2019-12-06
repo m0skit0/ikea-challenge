@@ -2,6 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="org.m0skit0.android.ikeachallenge">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".IkeaChallengeApplication"
         android:icon="@mipmap/ic_launcher"

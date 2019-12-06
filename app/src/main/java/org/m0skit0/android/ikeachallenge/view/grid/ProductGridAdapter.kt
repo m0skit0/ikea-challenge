@@ -27,11 +27,13 @@ internal class ProductGridAdapter : RecyclerView.Adapter<ProductGridAdapter.View
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with (holder) {
             products[position].let { product ->
-                product.imageUrl.fold({
-                    // Do nothing, keep default image
-                }) { url ->
-                    Picasso.get().load(url).into(image)
-                }
+                Picasso.get().run {
+                    product.imageUrl.fold({
+                        load(R.drawable.ic_empty_image)
+                    }) { url ->
+                        load(url)
+                    }
+                }.error(R.drawable.ic_empty_image).into(image)
                 name.text = product.name
                 price.text = product.price
             }

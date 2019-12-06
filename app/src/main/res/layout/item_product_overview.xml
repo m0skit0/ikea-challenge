@@ -10,7 +10,7 @@
         android:id="@+id/imageProduct"
         android:layout_width="@dimen/item_image_width"
         android:layout_height="@dimen/item_image_height"
-        android:src="@drawable/ic_empty_image"
+        android:src="@drawable/ic_loading"
         android:layout_gravity="center_horizontal"
         tools:ignore="ContentDescription"
         android:padding="@dimen/item_image_padding"/>

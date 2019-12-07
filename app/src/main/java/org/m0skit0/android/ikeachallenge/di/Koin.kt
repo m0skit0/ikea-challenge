@@ -15,7 +15,6 @@ import org.m0skit0.android.ikeachallenge.data.api.OptionTypeAdapterFactory
 import org.m0skit0.android.ikeachallenge.data.api.ProductApi
 import org.m0skit0.android.ikeachallenge.data.repository.ProductRepositoryImpl
 import org.m0skit0.android.ikeachallenge.data.repository.ProductRepositoryMock
-import org.m0skit0.android.ikeachallenge.domain.Product
 import org.m0skit0.android.ikeachallenge.domain.ProductRepository
 import org.m0skit0.android.ikeachallenge.log.AndroidLogger
 import org.m0skit0.android.ikeachallenge.log.Logger
@@ -26,6 +25,7 @@ import org.m0skit0.android.ikeachallenge.usecase.GetProductsUseCaseImpl
 import org.m0skit0.android.ikeachallenge.util.asAsset
 import org.m0skit0.android.ikeachallenge.view.product.grid.ProductGridFragment
 import org.m0skit0.android.ikeachallenge.view.product.grid.ProductListingViewModel
+import org.m0skit0.android.ikeachallenge.view.product.grid.ProductOverview
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.InputStream
@@ -74,11 +74,14 @@ private val useCaseModule = module {
 }
 
 internal val NAMED_MUTABLE_LIST_PRODUCTS = named("NAMED_MUTABLE_LIST_PRODUCTS")
+internal val NAMED_MUTABLE_PRODUCT = named("NAMED_MUTABLE_PRODUCT")
 internal val NAMED_MUTABLE_BOOLEAN = named("NAMED_MUTABLE_BOOLEAN")
 internal val NAMED_MUTABLE_ERROR = named("NAMED_MUTABLE_ERROR")
 
 private val viewModelModule = module {
-    factory(NAMED_MUTABLE_LIST_PRODUCTS) { MutableLiveData<List<Product>>() }
+    factory(NAMED_MUTABLE_LIST_PRODUCTS) { MutableLiveData<List<ProductOverview>>() }
+    factory(NAMED_MUTABLE_PRODUCT) { MutableLiveData<ProductOverview>() }
+
     factory(NAMED_MUTABLE_BOOLEAN) { MutableLiveData<Boolean>() }
     factory(NAMED_MUTABLE_ERROR) { MutableLiveData<Throwable>() }
 

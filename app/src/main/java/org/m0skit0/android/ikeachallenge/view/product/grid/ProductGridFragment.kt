@@ -4,17 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import org.koin.androidx.scope.currentScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.m0skit0.android.ikeachallenge.R
-import org.m0skit0.android.ikeachallenge.view.ErrorDialogFragment
+import org.m0skit0.android.ikeachallenge.view.BaseFragment
 
-internal class ProductGridFragment : Fragment() {
+internal class ProductGridFragment : BaseFragment() {
 
-    private val viewModel: ProductListingViewModel by currentScope.viewModel(this)
+    override val viewModel: ProductListingViewModel by currentScope.viewModel(this)
 
     private lateinit var productGridRecyclerView: RecyclerView
     private val productAdapter = ProductGridAdapter()
@@ -31,30 +29,12 @@ internal class ProductGridFragment : Fragment() {
         observeViewModel()
     }
 
-    private fun observeViewModel() {
+    override fun observeViewModel() {
+        super.observeViewModel()
         with(viewModel) {
-            isLoading.observe({ lifecycle }) { isLoading ->
-                if (isLoading) showLoading() else hideLoading()
-            }
-            error.observe({ lifecycle }) { error ->
-                showError(error)
-            }
             productOverviewList.observe({ lifecycle }) { products ->
                 productAdapter.products = products
             }
         }
-    }
-
-    private fun showLoading() {
-        findNavController().navigate(R.id.loadingDialogFragment)
-    }
-
-    private fun hideLoading() {
-        findNavController().popBackStack()
-    }
-
-    private fun showError(error: Throwable) {
-        val bundle = ErrorDialogFragment.bundle(error)
-        findNavController().navigate(R.id.errorDialogFragment, bundle)
     }
 }

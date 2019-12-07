@@ -12,7 +12,7 @@ import org.koin.core.inject
 import org.m0skit0.android.ikeachallenge.di.NAMED_MUTABLE_BOOLEAN
 import org.m0skit0.android.ikeachallenge.di.NAMED_MUTABLE_ERROR
 
-abstract class BaseViewModel : ViewModel(), CoroutineScope by CoroutineScope(Dispatchers.IO), KoinComponent {
+internal abstract class BaseViewModel : ViewModel(), CoroutineScope by CoroutineScope(Dispatchers.IO), KoinComponent {
 
     protected val mutableIsLoading: MutableLiveData<Boolean> by inject(NAMED_MUTABLE_BOOLEAN)
     val isLoading: LiveData<Boolean> by lazy { mutableIsLoading }

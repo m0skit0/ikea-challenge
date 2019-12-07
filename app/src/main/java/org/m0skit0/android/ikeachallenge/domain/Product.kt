@@ -6,7 +6,7 @@ import org.m0skit0.android.ikeachallenge.data.api.PriceDto
 internal sealed class Product(
     val id: Option<String> = Option.empty(),
     val imageUrl: Option<String> = Option.empty(),
-    val info: Option<Info> = Option.empty(),
+    val info: Option<ProductInfo> = Option.empty(),
     val name: Option<String> = Option.empty(),
     val price: Option<PriceDto> = Option.empty()
 )

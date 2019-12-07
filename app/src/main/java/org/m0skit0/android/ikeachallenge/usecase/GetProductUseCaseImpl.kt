@@ -8,7 +8,7 @@ import org.koin.core.KoinComponent
 import org.koin.core.inject
 import org.m0skit0.android.ikeachallenge.domain.Product
 import org.m0skit0.android.ikeachallenge.domain.ProductRepository
-import org.m0skit0.android.ikeachallenge.error.ProductNotFoundException
+import org.m0skit0.android.ikeachallenge.error.ProductNotFound
 
 internal class GetProductUseCaseImpl : GetProductUseCase, KoinComponent {
 
@@ -23,6 +23,6 @@ internal class GetProductUseCaseImpl : GetProductUseCase, KoinComponent {
                 products
                     .filter { it.id.isDefined() }
                     .firstOption { it.id.orNull() == productId }
-                    .toEither { ProductNotFoundException("No product found with id $productId") }
+                    .toEither { ProductNotFound("No product found with id $productId") }
             }
 }

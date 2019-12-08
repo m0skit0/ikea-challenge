@@ -32,7 +32,7 @@ internal abstract class BaseFragment : Fragment() {
         findNavController().popBackStack()
     }
 
-    private fun showError(error: Throwable) {
+    protected open fun showError(error: Throwable) {
         val bundle = ErrorDialogFragment.bundle(error)
         findNavController().navigate(R.id.errorDialogFragment, bundle)
     }

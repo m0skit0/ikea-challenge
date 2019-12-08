@@ -11,7 +11,7 @@ import com.squareup.picasso.Picasso
 import org.m0skit0.android.ikeachallenge.R
 import org.m0skit0.android.ikeachallenge.view.product.detail.ProductDetailFragment
 
-internal class ProductGridAdapter(val navController: NavController) : RecyclerView.Adapter<ProductGridAdapter.ViewHolder>() {
+internal class ProductGridAdapter(private val navController: NavController) : RecyclerView.Adapter<ProductGridAdapter.ViewHolder>() {
 
     var products: List<ProductOverview> = emptyList()
         set(value) {

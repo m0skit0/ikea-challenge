@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import org.koin.androidx.scope.currentScope
@@ -68,5 +69,10 @@ internal class ProductDetailFragment : BaseFragment() {
                 productInfoAdapter.info = info.toList()
             }
         }
+    }
+
+    override fun showError(error: Throwable) {
+        findNavController().popBackStack(R.id.productGridFragment, false)
+        super.showError(error)
     }
 }

@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_productGridFragment_to_errorDialogFragment"
             app:destination="@id/errorDialogFragment" />
+        <action
+            android:id="@+id/action_productGridFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
     </fragment>
     <dialog
         android:id="@+id/loadingDialogFragment"
@@ -23,4 +26,15 @@
         android:id="@+id/errorDialogFragment"
         android:name="org.m0skit0.android.ikeachallenge.view.ErrorDialogFragment"
         android:label="ErrorDialogFragment" />
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="org.m0skit0.android.ikeachallenge.view.product.detail.ProductDetailFragment"
+        android:label="ProductDetailFragment" >
+        <action
+            android:id="@+id/action_productDetailFragment_to_loadingDialogFragment"
+            app:destination="@id/loadingDialogFragment" />
+        <action
+            android:id="@+id/action_productDetailFragment_to_errorDialogFragment"
+            app:destination="@id/errorDialogFragment" />
+    </fragment>
 </navigation>

@@ -23,6 +23,8 @@ import org.m0skit0.android.ikeachallenge.usecase.GetProductUseCaseImpl
 import org.m0skit0.android.ikeachallenge.usecase.GetProductsUseCase
 import org.m0skit0.android.ikeachallenge.usecase.GetProductsUseCaseImpl
 import org.m0skit0.android.ikeachallenge.util.asAsset
+import org.m0skit0.android.ikeachallenge.view.product.detail.ProductDetailFragment
+import org.m0skit0.android.ikeachallenge.view.product.detail.ProductDetailViewModel
 import org.m0skit0.android.ikeachallenge.view.product.grid.ProductGridFragment
 import org.m0skit0.android.ikeachallenge.view.product.grid.ProductListingViewModel
 import org.m0skit0.android.ikeachallenge.view.product.grid.ProductOverview
@@ -87,6 +89,10 @@ private val viewModelModule = module {
 
     scope(named<ProductGridFragment>()) {
         viewModel { ProductListingViewModel() }
+    }
+
+    scope(named<ProductDetailFragment>()) {
+        viewModel { (id: String) -> ProductDetailViewModel(id) }
     }
 }
 

@@ -7,7 +7,7 @@ import org.m0skit0.android.ikeachallenge.di.NAMED_MUTABLE_PRODUCT
 import org.m0skit0.android.ikeachallenge.usecase.GetProductUseCase
 import org.m0skit0.android.ikeachallenge.view.BaseViewModel
 
-internal class ProductDetailViewModel(val productId: String) : BaseViewModel() {
+internal class ProductDetailViewModel(private val productId: String) : BaseViewModel() {
 
     private val getProductUseCase: GetProductUseCase by inject()
 

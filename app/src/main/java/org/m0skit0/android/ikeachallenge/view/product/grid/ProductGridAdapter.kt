@@ -5,11 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import org.m0skit0.android.ikeachallenge.R
+import org.m0skit0.android.ikeachallenge.view.product.detail.ProductDetailFragment
 
-internal class ProductGridAdapter : RecyclerView.Adapter<ProductGridAdapter.ViewHolder>() {
+internal class ProductGridAdapter(val navController: NavController) : RecyclerView.Adapter<ProductGridAdapter.ViewHolder>() {
 
     var products: List<ProductOverview> = emptyList()
         set(value) {
@@ -27,6 +29,7 @@ internal class ProductGridAdapter : RecyclerView.Adapter<ProductGridAdapter.View
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with (holder) {
             products[position].let { product ->
+
                 Picasso.get().run {
                     product.imageUrl.fold({
                         load(R.drawable.ic_empty_image)
@@ -34,8 +37,14 @@ internal class ProductGridAdapter : RecyclerView.Adapter<ProductGridAdapter.View
                         load(url)
                     }
                 }.error(R.drawable.ic_empty_image).into(image)
+
                 name.text = product.name
                 price.text = product.price
+
+                itemView.setOnClickListener {
+                    val bundle = ProductDetailFragment.bundle(product.id)
+                    navController.navigate(R.id.productDetailFragment, bundle)
+                }
             }
         }
     }

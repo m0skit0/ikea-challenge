@@ -4,9 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import arrow.core.Either
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 import org.m0skit0.android.ikeachallenge.di.NAMED_MUTABLE_BOOLEAN
@@ -34,5 +32,11 @@ internal abstract class BaseViewModel : ViewModel(), CoroutineScope by Coroutine
             block()
             mutableIsLoading.postValue(false)
         }
+    }
+
+    @ExperimentalCoroutinesApi
+    override fun onCleared() {
+        super.onCleared()
+        cancel()
     }
 }

@@ -2,6 +2,7 @@ package org.m0skit0.android.ikeachallenge.view.product.detail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import kotlinx.coroutines.launch
 import org.koin.core.inject
 import org.m0skit0.android.ikeachallenge.di.NAMED_MUTABLE_PRODUCT
 import org.m0skit0.android.ikeachallenge.usecase.GetProductUseCase
@@ -18,7 +19,7 @@ internal class ProductDetailViewModel(private val productId: String) : BaseViewM
     }
 
     private fun getProduct() {
-        launchWithLoading {
+        launch {
             getProductUseCase(productId).getOrPostError { product ->
                 product.toDetail().getOrPostError {
                     mutableProductDetail.postValue(it)

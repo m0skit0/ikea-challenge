@@ -16,7 +16,7 @@
             app:destination="@id/errorDialogFragment" />
         <action
             android:id="@+id/action_productGridFragment_to_productDetailFragment"
-            app:destination="@id/productDetailFragment" />
+            app:destination="@id/productDetailDialogFragment" />
     </fragment>
     <dialog
         android:id="@+id/loadingDialogFragment"
@@ -26,8 +26,8 @@
         android:id="@+id/errorDialogFragment"
         android:name="org.m0skit0.android.ikeachallenge.view.ErrorDialogFragment"
         android:label="ErrorDialogFragment" />
-    <fragment
-        android:id="@+id/productDetailFragment"
+    <dialog
+        android:id="@+id/productDetailDialogFragment"
         android:name="org.m0skit0.android.ikeachallenge.view.product.detail.ProductDetailFragment"
         android:label="ProductDetailFragment" >
         <action
@@ -36,5 +36,5 @@
         <action
             android:id="@+id/action_productDetailFragment_to_errorDialogFragment"
             app:destination="@id/errorDialogFragment" />
-    </fragment>
+    </dialog>
 </navigation>

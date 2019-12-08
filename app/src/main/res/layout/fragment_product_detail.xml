@@ -7,53 +7,66 @@
 
     <ImageView
         android:id="@+id/imageProduct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/item_overview_image_width"
+        android:layout_height="@dimen/item_detail_image_height"
+        android:layout_marginStart="@dimen/extra_small_padding"
+        android:layout_marginEnd="@dimen/extra_small_padding"
         android:src="@drawable/ic_loading"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:src="@drawable/ic_loading"
-        tools:ignore="ContentDescription" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.10"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/ic_loading" />
 
     <TextView
         android:id="@+id/textName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/imageProduct"
+        android:layout_marginTop="@dimen/extra_small_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageProduct"
+        app:layout_constraintVertical_bias="0.10"
         tools:text="Eyjafjallajökull" />
 
     <TextView
         android:id="@+id/textPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/extra_small_padding"
         app:layout_constraintTop_toBottomOf="@id/textName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.10"
         tools:text="1000.00 kr" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/textName"
+        android:layout_marginTop="@dimen/extra_small_padding"
+        app:layout_constraintTop_toBottomOf="@id/textPrice"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.10"
+        />
 
     <Button
         android:id="@+id/buttonAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/extra_small_padding"
         app:layout_constraintTop_toBottomOf="@id/recyclerInfo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.10"
+        android:layout_marginBottom="@dimen/large_padding"
         android:text="@string/add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

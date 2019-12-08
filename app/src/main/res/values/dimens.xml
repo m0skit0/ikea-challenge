@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="item_padding">20dp</dimen>
 
-    <dimen name="item_image_padding">5dp</dimen>
-    <dimen name="item_image_height">200dp</dimen>
-    <dimen name="item_image_width">300dp</dimen>
+    <dimen name="large_padding">20dp</dimen>
+    <dimen name="extra_small_padding">5dp</dimen>
 
-    <dimen name="item_name_padding">5dp</dimen>
-    <dimen name="item_price_padding">5dp</dimen>
+    <dimen name="item_overview_image_height">200dp</dimen>
+    <dimen name="item_overview_image_width">300dp</dimen>
+
+    <dimen name="item_detail_image_height">200dp</dimen>
+    <dimen name="item_detail_image_width">300dp</dimen>
 </resources>

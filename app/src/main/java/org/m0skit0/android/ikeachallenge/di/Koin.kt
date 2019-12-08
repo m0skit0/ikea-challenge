@@ -14,7 +14,7 @@ import org.m0skit0.android.ikeachallenge.BuildConfig
 import org.m0skit0.android.ikeachallenge.data.api.OptionTypeAdapterFactory
 import org.m0skit0.android.ikeachallenge.data.api.ProductApi
 import org.m0skit0.android.ikeachallenge.data.repository.ProductRepositoryImpl
-import org.m0skit0.android.ikeachallenge.data.repository.ProductRepositoryMock
+import org.m0skit0.android.ikeachallenge.data.repository.mock.ProductRepositoryMock
 import org.m0skit0.android.ikeachallenge.domain.ProductRepository
 import org.m0skit0.android.ikeachallenge.log.AndroidLogger
 import org.m0skit0.android.ikeachallenge.log.Logger

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import org.koin.androidx.scope.currentScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.m0skit0.android.ikeachallenge.R
-import org.m0skit0.android.ikeachallenge.view.BaseFragment
+import org.m0skit0.android.ikeachallenge.util.view.BaseFragment
 
 internal class ProductGridFragment : BaseFragment() {
 

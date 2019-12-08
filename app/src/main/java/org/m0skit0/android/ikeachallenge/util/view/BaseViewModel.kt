@@ -1,4 +1,4 @@
-package org.m0skit0.android.ikeachallenge.view
+package org.m0skit0.android.ikeachallenge.util.view
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

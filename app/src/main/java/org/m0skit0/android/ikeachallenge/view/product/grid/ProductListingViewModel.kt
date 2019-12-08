@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import org.koin.core.inject
 import org.m0skit0.android.ikeachallenge.di.NAMED_MUTABLE_LIST_PRODUCTS
 import org.m0skit0.android.ikeachallenge.usecase.GetProductsUseCase
-import org.m0skit0.android.ikeachallenge.view.BaseViewModel
+import org.m0skit0.android.ikeachallenge.util.view.BaseViewModel
 
 internal class ProductListingViewModel : BaseViewModel() {
 

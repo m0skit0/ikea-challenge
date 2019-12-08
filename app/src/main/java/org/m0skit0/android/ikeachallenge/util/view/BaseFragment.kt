@@ -1,4 +1,4 @@
-package org.m0skit0.android.ikeachallenge.view
+package org.m0skit0.android.ikeachallenge.util.view
 
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -33,7 +33,8 @@ internal abstract class BaseFragment : Fragment() {
     }
 
     protected open fun showError(error: Throwable) {
-        val bundle = ErrorDialogFragment.bundle(error)
+        val bundle =
+            ErrorDialogFragment.bundle(error)
         findNavController().navigate(R.id.errorDialogFragment, bundle)
     }
 }

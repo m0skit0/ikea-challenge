@@ -13,7 +13,7 @@ import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.core.parameter.parametersOf
 import org.m0skit0.android.ikeachallenge.R
 import org.m0skit0.android.ikeachallenge.util.toast
-import org.m0skit0.android.ikeachallenge.view.BaseDialogFragment
+import org.m0skit0.android.ikeachallenge.util.view.BaseDialogFragment
 
 internal class ProductDetailFragment : BaseDialogFragment() {
 

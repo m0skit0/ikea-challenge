@@ -20,11 +20,11 @@
     </fragment>
     <dialog
         android:id="@+id/loadingDialogFragment"
-        android:name="org.m0skit0.android.ikeachallenge.view.LoadingDialogFragment"
+        android:name="org.m0skit0.android.ikeachallenge.util.view.LoadingDialogFragment"
         android:label="LoadingDialogFragment" />
     <dialog
         android:id="@+id/errorDialogFragment"
-        android:name="org.m0skit0.android.ikeachallenge.view.ErrorDialogFragment"
+        android:name="org.m0skit0.android.ikeachallenge.util.view.ErrorDialogFragment"
         android:label="ErrorDialogFragment" />
     <dialog
         android:id="@+id/productDetailDialogFragment"

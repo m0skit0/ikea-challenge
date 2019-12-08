@@ -1,4 +1,4 @@
-package org.m0skit0.android.ikeachallenge.view
+package org.m0skit0.android.ikeachallenge.util.view
 
 import android.app.AlertDialog
 import android.app.Dialog
@@ -60,7 +60,8 @@ internal abstract class BaseDialogFragment : DialogFragment() {
     }
 
     protected open fun showError(error: Throwable) {
-        val bundle = ErrorDialogFragment.bundle(error)
+        val bundle =
+            ErrorDialogFragment.bundle(error)
         findNavController().navigate(R.id.errorDialogFragment, bundle)
     }
 }

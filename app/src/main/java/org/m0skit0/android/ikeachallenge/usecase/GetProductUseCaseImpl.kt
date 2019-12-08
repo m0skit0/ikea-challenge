@@ -1,9 +1,9 @@
 package org.m0skit0.android.ikeachallenge.usecase
 
 import arrow.core.Either
-import arrow.core.extensions.list.foldable.firstOption
 import arrow.core.extensions.list.functorFilter.filter
 import arrow.core.flatMap
+import arrow.core.toOption
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 import org.m0skit0.android.ikeachallenge.domain.Product
@@ -22,7 +22,8 @@ internal class GetProductUseCaseImpl : GetProductUseCase, KoinComponent {
             .flatMap { products ->
                 products
                     .filter { it.id.isDefined() }
-                    .firstOption { it.id.orNull() == productId }
+                    .firstOrNull { it.id.orNull() == productId }
+                    .toOption()
                     .toEither { ProductNotFound("No product found with id $productId") }
             }
 }

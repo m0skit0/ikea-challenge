@@ -72,7 +72,7 @@ internal class ProductDetailFragment : BaseFragment() {
     }
 
     override fun showError(error: Throwable) {
-        findNavController().popBackStack(R.id.productGridFragment, false)
+        findNavController().popBackStack()
         super.showError(error)
     }
 }

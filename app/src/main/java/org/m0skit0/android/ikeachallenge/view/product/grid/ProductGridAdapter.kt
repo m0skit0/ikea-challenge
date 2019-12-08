@@ -42,6 +42,8 @@ internal class ProductGridAdapter(private val navController: NavController) : Re
                 price.text = product.price
 
                 itemView.setOnClickListener {
+                    // TODO Find out why back button is not working correctly
+                    //  for the second time this navigation is called
                     val bundle = ProductDetailFragment.bundle(product.id)
                     navController.navigate(R.id.productDetailFragment, bundle)
                 }

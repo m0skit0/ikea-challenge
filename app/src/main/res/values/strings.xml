@@ -5,4 +5,5 @@
     <string name="material_title">Material</string>
     <string name="color_title">Color</string>
     <string name="numberOfSeats_title">Number of seats</string>
+    <string name="add">Add</string>
 </resources>

@@ -15,7 +15,7 @@ internal fun Product.toDetail(): Either<Throwable, ProductDetail> =
     id.flatMap { id ->
         name.map { name ->
             val price = price.fold({ "???" }) { it.toPriceOverview() }
-            val info = info.fold({ mapOf<String, String>() }) { it.toDetailInfo() }
+            val info: List<ItemInfo> = info.fold({ emptyList() }) { it.toDetailInfo() }
             ProductDetail(id, name, price, imageUrl, info)
         }
     }.toEither { InvalidProduct("Product is invalid") }
@@ -24,21 +24,19 @@ private fun PriceDto.toPriceOverview() = "${value.toPriceOverview()} ${currency.
 private fun Option<Double>.toPriceOverview() = fold({ "???" }) { "%.2f".format(it) }
 private fun Option<String>.toCurrencyOverview() = fold({ "???" }) { it }
 
-private fun ProductInfo.toDetailInfo(): Map<String, String> =
+private fun ProductInfo.toDetailInfo(): List<ItemInfo> =
     when(this) {
         is ChairInfo -> toDetailInfo()
         is CouchInfo -> toDetailInfo()
     }
 
-private fun ChairInfo.toDetailInfo(): Map<String, String> =
+private fun ChairInfo.toDetailInfo(): List<ItemInfo> =
     (listOf<Option<Pair<String, String>>>() + material.toMaterialDetail() + color.toColorDetail())
         .mapNotNull { it.orNull() }
-        .associate { it }
 
-private fun CouchInfo.toDetailInfo(): Map<String, String> =
+private fun CouchInfo.toDetailInfo(): List<ItemInfo> =
     (listOf<Option<Pair<String, String>>>() + numberOfSeats.toNumberOfSeatsDetail() + color.toColorDetail())
         .mapNotNull { it.orNull() }
-        .associate { it }
 
 private fun Option<String>.toMaterialDetail(): Option<Pair<String, String>> =
     map { getStringResource(R.string.material_title) to it }

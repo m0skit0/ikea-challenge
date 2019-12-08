@@ -1,9 +1,13 @@
 package org.m0skit0.android.ikeachallenge.view.product.detail
 
 import android.annotation.SuppressLint
+import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import org.m0skit0.android.ikeachallenge.R
+
 
 internal class ProductInfoAdapter : RecyclerView.Adapter<ProductInfoAdapter.ViewHolder>() {
 
@@ -14,16 +18,20 @@ internal class ProductInfoAdapter : RecyclerView.Adapter<ProductInfoAdapter.View
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(TextView(parent.context))
+        LayoutInflater.from(parent.context).inflate(R.layout.item_product_info, parent, false).run {
+            ViewHolder(this)
+        }
 
     override fun getItemCount(): Int = info.size
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.textInfo.text = "${info[position].first}: ${info[position].second}"
+        with(info[position]) {
+            holder.textInfo.text = "${info()}: ${value()}"
+        }
     }
 
-    class ViewHolder(itemView: TextView): RecyclerView.ViewHolder(itemView) {
-        val textInfo: TextView = itemView
+    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+        val textInfo: TextView = itemView.findViewById(R.id.textInfoItem)
     }
 }

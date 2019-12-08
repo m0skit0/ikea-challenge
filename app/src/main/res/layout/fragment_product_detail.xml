@@ -37,10 +37,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/extra_small_padding"
-        app:layout_constraintTop_toBottomOf="@id/textName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textName"
         app:layout_constraintVertical_bias="0.10"
         tools:text="1000.00 kr" />
 
@@ -49,24 +49,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/extra_small_padding"
-        app:layout_constraintTop_toBottomOf="@id/textPrice"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.10"
-        />
+        app:layout_constraintTop_toBottomOf="@id/textPrice"
+        app:layout_constraintVertical_bias="0.10" />
 
     <Button
         android:id="@+id/buttonAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/extra_small_padding"
-        app:layout_constraintTop_toBottomOf="@id/recyclerInfo"
+        android:layout_marginBottom="@dimen/large_padding"
+        android:text="@string/add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.10"
-        android:layout_marginBottom="@dimen/large_padding"
-        android:text="@string/add" />
+        app:layout_constraintTop_toBottomOf="@id/recyclerInfo"
+        app:layout_constraintVertical_bias="0.10" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

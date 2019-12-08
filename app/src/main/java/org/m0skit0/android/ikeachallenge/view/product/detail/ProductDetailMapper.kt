@@ -39,10 +39,10 @@ private fun CouchInfo.toDetailInfo(): List<ItemInfo> =
         .mapNotNull { it.orNull() }
 
 private fun Option<String>.toMaterialDetail(): Option<Pair<String, String>> =
-    map { getStringResource(R.string.material_title) to it }
+    map { getStringResource(R.string.material_title) to it.capitalize() }
 
 private fun Option<String>.toNumberOfSeatsDetail(): Option<Pair<String, String>> =
-    map { getStringResource(R.string.numberOfSeats_title) to it }
+    map { getStringResource(R.string.numberOfSeats_title) to it.capitalize() }
 
 private fun Option<String>.toColorDetail(): Option<Pair<String, String>> =
-    map { getStringResource(R.string.color_title) to it }
+    map { getStringResource(R.string.color_title) to it.capitalize() }

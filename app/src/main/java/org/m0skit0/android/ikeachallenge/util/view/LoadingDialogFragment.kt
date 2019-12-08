@@ -23,5 +23,4 @@ internal class LoadingDialogFragment : DialogFragment() {
             .setCancelable(false)
             .create()
     }
-
 }

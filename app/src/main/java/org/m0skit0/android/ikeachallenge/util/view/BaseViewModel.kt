@@ -7,8 +7,8 @@ import arrow.core.Either
 import kotlinx.coroutines.*
 import org.koin.core.KoinComponent
 import org.koin.core.inject
-import org.m0skit0.android.ikeachallenge.di.NAMED_MUTABLE_BOOLEAN
-import org.m0skit0.android.ikeachallenge.di.NAMED_MUTABLE_ERROR
+import org.m0skit0.android.ikeachallenge.di.ViewModelModule.NAMED_MUTABLE_BOOLEAN
+import org.m0skit0.android.ikeachallenge.di.ViewModelModule.NAMED_MUTABLE_ERROR
 
 internal abstract class BaseViewModel : ViewModel(), CoroutineScope by CoroutineScope(Dispatchers.IO), KoinComponent {
 

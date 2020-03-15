@@ -3,7 +3,7 @@ package org.m0skit0.android.ikeachallenge.view.product.grid
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import org.koin.core.inject
-import org.m0skit0.android.ikeachallenge.di.NAMED_MUTABLE_LIST_PRODUCTS
+import org.m0skit0.android.ikeachallenge.di.ViewModelModule.NAMED_MUTABLE_LIST_PRODUCTS
 import org.m0skit0.android.ikeachallenge.usecase.GetProducts
 import org.m0skit0.android.ikeachallenge.util.view.BaseViewModel
 

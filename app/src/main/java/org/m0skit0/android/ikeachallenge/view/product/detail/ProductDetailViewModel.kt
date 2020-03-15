@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.launch
 import org.koin.core.inject
-import org.m0skit0.android.ikeachallenge.di.NAMED_MUTABLE_PRODUCT
+import org.m0skit0.android.ikeachallenge.di.ViewModelModule.NAMED_MUTABLE_PRODUCT
 import org.m0skit0.android.ikeachallenge.usecase.GetProduct
 import org.m0skit0.android.ikeachallenge.util.view.BaseViewModel
 

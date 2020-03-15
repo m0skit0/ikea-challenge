@@ -9,7 +9,7 @@ import org.koin.core.context.loadKoinModules
 import org.koin.dsl.module
 import org.m0skit0.android.ikeachallenge.KoinFreeSpec
 import org.m0skit0.android.ikeachallenge.data.repository.mock.ProductRepositoryMock
-import org.m0skit0.android.ikeachallenge.di.NAMED_MOCK_PRODUCTS_PROVIDER
+import org.m0skit0.android.ikeachallenge.di.RepositoryModule.NAMED_MOCK_PRODUCTS_PROVIDER
 import org.m0skit0.android.ikeachallenge.shouldNotBeCalled
 import java.io.IOException
 import java.io.InputStream

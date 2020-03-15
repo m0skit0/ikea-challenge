@@ -19,9 +19,9 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 import org.m0skit0.android.ikeachallenge.KoinFreeSpec
 import org.m0skit0.android.ikeachallenge.data.api.PriceDto
-import org.m0skit0.android.ikeachallenge.di.NAMED_MUTABLE_BOOLEAN
-import org.m0skit0.android.ikeachallenge.di.NAMED_MUTABLE_ERROR
-import org.m0skit0.android.ikeachallenge.di.NAMED_MUTABLE_PRODUCT
+import org.m0skit0.android.ikeachallenge.di.ViewModelModule.NAMED_MUTABLE_BOOLEAN
+import org.m0skit0.android.ikeachallenge.di.ViewModelModule.NAMED_MUTABLE_ERROR
+import org.m0skit0.android.ikeachallenge.di.ViewModelModule.NAMED_MUTABLE_PRODUCT
 import org.m0skit0.android.ikeachallenge.domain.ChairInfo
 import org.m0skit0.android.ikeachallenge.domain.Product
 import org.m0skit0.android.ikeachallenge.usecase.GetProduct

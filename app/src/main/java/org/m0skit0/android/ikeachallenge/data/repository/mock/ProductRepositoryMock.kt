@@ -7,7 +7,7 @@ import kotlinx.coroutines.runBlocking
 import org.koin.core.KoinComponent
 import org.koin.core.get
 import org.m0skit0.android.ikeachallenge.data.api.ProductsDto
-import org.m0skit0.android.ikeachallenge.di.NAMED_MOCK_PRODUCTS_PROVIDER
+import org.m0skit0.android.ikeachallenge.di.RepositoryModule.NAMED_MOCK_PRODUCTS_PROVIDER
 import org.m0skit0.android.ikeachallenge.domain.Product
 import org.m0skit0.android.ikeachallenge.domain.ProductRepository
 import org.m0skit0.android.ikeachallenge.domain.toProductsByType

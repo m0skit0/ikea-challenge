@@ -16,9 +16,9 @@ import kotlinx.coroutines.runBlocking
 import org.koin.core.module.Module
 import org.koin.dsl.module
 import org.m0skit0.android.ikeachallenge.KoinFreeSpec
-import org.m0skit0.android.ikeachallenge.di.NAMED_MUTABLE_BOOLEAN
-import org.m0skit0.android.ikeachallenge.di.NAMED_MUTABLE_ERROR
-import org.m0skit0.android.ikeachallenge.di.NAMED_MUTABLE_LIST_PRODUCTS
+import org.m0skit0.android.ikeachallenge.di.ViewModelModule.NAMED_MUTABLE_BOOLEAN
+import org.m0skit0.android.ikeachallenge.di.ViewModelModule.NAMED_MUTABLE_ERROR
+import org.m0skit0.android.ikeachallenge.di.ViewModelModule.NAMED_MUTABLE_LIST_PRODUCTS
 import org.m0skit0.android.ikeachallenge.domain.Product
 import org.m0skit0.android.ikeachallenge.usecase.GetProducts
 import org.m0skit0.android.ikeachallenge.view.product.grid.ProductListingViewModel

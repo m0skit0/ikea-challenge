@@ -30,12 +30,12 @@ class TestGetProducts : KoinFreeSpec() {
 
     init {
         "when product repository throws exception use case must return error" {
-            every { mockProductRepository.getProducts() } returns IO { throw IOException() }
+            every { mockProductRepository.getProducts() } returns IO.raiseError(IOException())
             runBlocking { products() }.shouldBeLeftOfType<IOException>()
         }
 
         "when product repository returns data use case must return data" {
-            every { mockProductRepository.getProducts() } returns IO { emptyList<Product>() }
+            every { mockProductRepository.getProducts() } returns IO.just(emptyList())
             runBlocking { products() } shouldBeRight emptyList()
         }
     }

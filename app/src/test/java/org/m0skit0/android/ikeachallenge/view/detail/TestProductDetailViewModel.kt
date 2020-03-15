@@ -141,7 +141,7 @@ class TestProductDetailViewModel : KoinFreeSpec() {
                     every { mockMutableError.postValue(any()) } answers {
                         throwable = firstArg()
                     }
-                    ProductListingViewModel().productOverviewList
+                    ProductDetailViewModel("id").productDetail
                 }
             }
             isLoadingTrueCalled.shouldBeTrue()

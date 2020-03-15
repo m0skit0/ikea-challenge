@@ -21,7 +21,7 @@ internal class ProductDetailViewModel(private val productId: String) : BaseViewM
     }
 
     private fun getProduct() {
-        launch {
+        launchWithLoading {
             getProductUseCase(productId).getOrPostError { product ->
                 product.toDetail().getOrPostError {
                     mutableProductDetail.postValue(it)

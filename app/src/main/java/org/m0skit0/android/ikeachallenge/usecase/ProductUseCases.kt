@@ -11,11 +11,14 @@ import org.m0skit0.android.ikeachallenge.error.ProductNotFound
 
 private fun productRepository(): ProductRepository = koin().get()
 
-internal fun product(productId: String): Either<Throwable, Product> =
+private fun getProducts(): Either<Throwable, List<Product>> =
     productRepository()
         .getProducts()
         .attempt()
         .unsafeRunSync()
+
+internal fun product(productId: String): Either<Throwable, Product> =
+    getProducts()
         .flatMap { products ->
             products
                 .filter { it.id.isDefined() }
@@ -24,5 +27,4 @@ internal fun product(productId: String): Either<Throwable, Product> =
                 .toEither { ProductNotFound("No product found with id $productId") }
         }
 
-internal fun products(): Either<Throwable, List<Product>> =
-    productRepository().getProducts().attempt().unsafeRunSync()
+internal fun products(): Either<Throwable, List<Product>> = getProducts()

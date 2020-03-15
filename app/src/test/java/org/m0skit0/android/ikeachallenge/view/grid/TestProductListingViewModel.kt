@@ -2,6 +2,7 @@ package org.m0skit0.android.ikeachallenge.view.grid
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import arrow.core.Either
 import arrow.core.left
 import arrow.core.right
 import io.kotlintest.TestCase
@@ -12,24 +13,23 @@ import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
+import io.mockk.mockkStatic
 import kotlinx.coroutines.runBlocking
 import org.koin.core.module.Module
 import org.koin.dsl.module
 import org.m0skit0.android.ikeachallenge.KoinFreeSpec
+import org.m0skit0.android.ikeachallenge.di.UseCaseModule.NAMED_GET_PRODUCTS
 import org.m0skit0.android.ikeachallenge.di.ViewModelModule.NAMED_MUTABLE_BOOLEAN
 import org.m0skit0.android.ikeachallenge.di.ViewModelModule.NAMED_MUTABLE_ERROR
 import org.m0skit0.android.ikeachallenge.di.ViewModelModule.NAMED_MUTABLE_LIST_PRODUCTS
 import org.m0skit0.android.ikeachallenge.domain.Product
-import org.m0skit0.android.ikeachallenge.usecase.GetProducts
+import org.m0skit0.android.ikeachallenge.usecase.products
 import org.m0skit0.android.ikeachallenge.view.product.grid.ProductListingViewModel
 import org.m0skit0.android.ikeachallenge.view.product.grid.ProductOverview
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
 class TestProductListingViewModel : KoinFreeSpec() {
-
-    @MockK
-    private lateinit var mockGetProductsUseCase: GetProducts
 
     @MockK
     private lateinit var mockMutableListProductOverview: MutableLiveData<List<ProductOverview>>
@@ -44,13 +44,14 @@ class TestProductListingViewModel : KoinFreeSpec() {
         single(NAMED_MUTABLE_LIST_PRODUCTS) { mockMutableListProductOverview }
         single(NAMED_MUTABLE_BOOLEAN) { mockMutableLoading }
         single(NAMED_MUTABLE_ERROR) { mockMutableError }
-        single { mockGetProductsUseCase }
+        single<() -> Either<Throwable, List<Product>>>(NAMED_GET_PRODUCTS) { ::products }
     }
 
     override fun beforeTest(testCase: TestCase) {
         super.beforeTest(testCase)
         MockKAnnotations.init(this)
-        coEvery { mockGetProductsUseCase.invoke() } returns emptyList<Product>().right()
+        mockkStatic("org.m0skit0.android.ikeachallenge.usecase.ProductUseCasesKt")
+        coEvery { products() } returns emptyList<Product>().right()
         every { mockMutableListProductOverview.observeForever(any()) } answers {
             firstArg<Observer<List<ProductOverview>>>().onChanged(emptyList())
         }
@@ -89,7 +90,7 @@ class TestProductListingViewModel : KoinFreeSpec() {
             var isLoadingFalseCalled = false
 
             var throwable: Throwable? = null
-            coEvery { mockGetProductsUseCase.invoke() } returns IllegalArgumentException().left()
+            coEvery { products() } returns IllegalArgumentException().left()
             runBlocking {
                 suspendCoroutine<Unit> { cont ->
                     every { mockMutableLoading.postValue(any()) } answers {

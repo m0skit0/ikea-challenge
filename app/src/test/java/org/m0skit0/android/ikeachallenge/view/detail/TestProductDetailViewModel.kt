@@ -2,6 +2,7 @@ package org.m0skit0.android.ikeachallenge.view.detail
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import arrow.core.Either
 import arrow.core.left
 import arrow.core.right
 import arrow.core.toOption
@@ -19,24 +20,26 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 import org.m0skit0.android.ikeachallenge.KoinFreeSpec
 import org.m0skit0.android.ikeachallenge.data.api.PriceDto
+import org.m0skit0.android.ikeachallenge.di.UseCaseModule.NAMED_GET_PRODUCT
+import org.m0skit0.android.ikeachallenge.di.UseCaseModule.NAMED_GET_PRODUCTS
 import org.m0skit0.android.ikeachallenge.di.ViewModelModule.NAMED_MUTABLE_BOOLEAN
 import org.m0skit0.android.ikeachallenge.di.ViewModelModule.NAMED_MUTABLE_ERROR
+import org.m0skit0.android.ikeachallenge.di.ViewModelModule.NAMED_MUTABLE_LIST_PRODUCTS
 import org.m0skit0.android.ikeachallenge.di.ViewModelModule.NAMED_MUTABLE_PRODUCT
 import org.m0skit0.android.ikeachallenge.domain.ChairInfo
 import org.m0skit0.android.ikeachallenge.domain.Product
-import org.m0skit0.android.ikeachallenge.usecase.GetProduct
+import org.m0skit0.android.ikeachallenge.usecase.product
+import org.m0skit0.android.ikeachallenge.usecase.products
 import org.m0skit0.android.ikeachallenge.util.getStringResource
 import org.m0skit0.android.ikeachallenge.view.product.detail.ProductDetail
 import org.m0skit0.android.ikeachallenge.view.product.detail.ProductDetailViewModel
 import org.m0skit0.android.ikeachallenge.view.product.detail.toDetail
 import org.m0skit0.android.ikeachallenge.view.product.grid.ProductListingViewModel
+import org.m0skit0.android.ikeachallenge.view.product.grid.ProductOverview
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
 class TestProductDetailViewModel : KoinFreeSpec() {
-
-    @MockK
-    private lateinit var mockGetProductUseCase: GetProduct
 
     @MockK
     private lateinit var mockMutableLoading: MutableLiveData<Boolean>
@@ -48,6 +51,9 @@ class TestProductDetailViewModel : KoinFreeSpec() {
     private lateinit var mockMutableProductDetail: MutableLiveData<ProductDetail>
 
     @MockK
+    private lateinit var mockMutableListProducts: MutableLiveData<List<ProductOverview>>
+
+    @MockK
     private lateinit var mockProduct: Product
 
     @MockK
@@ -57,12 +63,17 @@ class TestProductDetailViewModel : KoinFreeSpec() {
         single(NAMED_MUTABLE_PRODUCT) { mockMutableProductDetail }
         single(NAMED_MUTABLE_BOOLEAN) { mockMutableLoading }
         single(NAMED_MUTABLE_ERROR) { mockMutableError }
-        single { mockGetProductUseCase }
+        single(NAMED_MUTABLE_LIST_PRODUCTS) { mockMutableListProducts }
+        single<() -> Either<Throwable, List<Product>>>(NAMED_GET_PRODUCTS) { ::products }
+        single<(String) -> Either<Throwable, Product>>(NAMED_GET_PRODUCT) { ::product }
     }
 
     override fun beforeTest(testCase: TestCase) {
         MockKAnnotations.init(this)
+
         mockkStatic("org.m0skit0.android.ikeachallenge.util.KoinUtilsKt")
+        every { getStringResource(any()) } returns "resource"
+
         every { mockProduct.id } returns "id".toOption()
         every { mockProduct.name } returns "name".toOption()
         every { mockProduct.price } returns PriceDto("kr".toOption(), 0.0.toOption()).toOption()
@@ -70,8 +81,11 @@ class TestProductDetailViewModel : KoinFreeSpec() {
         every { mockProduct.info } returns mockChairInfo.toOption()
         every { mockChairInfo.material } returns "material".toOption()
         every { mockChairInfo.color } returns "color".toOption()
-        every { getStringResource(any()) } returns "resource"
-        coEvery { mockGetProductUseCase.invoke(any()) } returns mockProduct.right()
+
+        mockkStatic("org.m0skit0.android.ikeachallenge.usecase.ProductUseCasesKt")
+        coEvery { product(any()) } returns mockProduct.right()
+        coEvery { products() } returns emptyList<Product>().right()
+
         every { mockMutableProductDetail.observeForever(any()) } answers {
             mockProduct.toDetail().fold({
                 throw it
@@ -115,7 +129,7 @@ class TestProductDetailViewModel : KoinFreeSpec() {
             var isLoadingFalseCalled = false
 
             var throwable: Throwable? = null
-            coEvery { mockGetProductUseCase.invoke("id") } returns IllegalArgumentException().left()
+            coEvery { product("id") } returns IllegalArgumentException().left()
             runBlocking {
                 suspendCoroutine<Unit> { cont ->
                     every { mockMutableLoading.postValue(any()) } answers {

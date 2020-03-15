@@ -24,7 +24,7 @@ import org.m0skit0.android.ikeachallenge.di.NAMED_MUTABLE_ERROR
 import org.m0skit0.android.ikeachallenge.di.NAMED_MUTABLE_PRODUCT
 import org.m0skit0.android.ikeachallenge.domain.ChairInfo
 import org.m0skit0.android.ikeachallenge.domain.Product
-import org.m0skit0.android.ikeachallenge.usecase.GetProductUseCase
+import org.m0skit0.android.ikeachallenge.usecase.GetProduct
 import org.m0skit0.android.ikeachallenge.util.getStringResource
 import org.m0skit0.android.ikeachallenge.view.product.detail.ProductDetail
 import org.m0skit0.android.ikeachallenge.view.product.detail.ProductDetailViewModel
@@ -36,7 +36,7 @@ import kotlin.coroutines.suspendCoroutine
 class TestProductDetailViewModel : KoinFreeSpec() {
 
     @MockK
-    private lateinit var mockGetProductUseCase: GetProductUseCase
+    private lateinit var mockGetProductUseCase: GetProduct
 
     @MockK
     private lateinit var mockMutableLoading: MutableLiveData<Boolean>

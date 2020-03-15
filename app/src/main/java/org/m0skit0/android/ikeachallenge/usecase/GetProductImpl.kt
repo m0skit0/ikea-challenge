@@ -10,7 +10,7 @@ import org.m0skit0.android.ikeachallenge.domain.Product
 import org.m0skit0.android.ikeachallenge.domain.ProductRepository
 import org.m0skit0.android.ikeachallenge.error.ProductNotFound
 
-internal class GetProductUseCaseImpl : GetProductUseCase, KoinComponent {
+internal class GetProductImpl : GetProduct, KoinComponent {
 
     private val productRepository: ProductRepository by inject()
 

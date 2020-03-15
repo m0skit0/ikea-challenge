@@ -6,7 +6,7 @@ import org.koin.core.inject
 import org.m0skit0.android.ikeachallenge.domain.Product
 import org.m0skit0.android.ikeachallenge.domain.ProductRepository
 
-internal class GetProductsUseCaseImpl : GetProductsUseCase, KoinComponent {
+internal class GetProductsImpl : GetProducts, KoinComponent {
 
     private val productRepository: ProductRepository by inject()
 

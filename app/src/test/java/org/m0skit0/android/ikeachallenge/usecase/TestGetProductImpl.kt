@@ -17,7 +17,7 @@ import org.m0skit0.android.ikeachallenge.domain.ProductRepository
 import org.m0skit0.android.ikeachallenge.error.ProductNotFound
 import java.io.IOException
 
-class TestGetProductUseCaseImpl : KoinFreeSpec() {
+class TestGetProductImpl : KoinFreeSpec() {
 
     @MockK
     private lateinit var mockProductRepository: ProductRepository
@@ -34,19 +34,19 @@ class TestGetProductUseCaseImpl : KoinFreeSpec() {
     init {
         "when product repository throws exception use case must return error" {
             every { mockProductRepository.getProducts() } returns IO { throw IOException() }
-            runBlocking { GetProductUseCaseImpl()("") }.shouldBeLeftOfType<IOException>()
+            runBlocking { GetProductImpl()("") }.shouldBeLeftOfType<IOException>()
         }
 
         "when id not found use case must return error" {
             every { mockProductRepository.getProducts() } returns IO { emptyList<Product>() }
-            runBlocking { GetProductUseCaseImpl()("1") }.shouldBeLeftOfType<ProductNotFound>()
+            runBlocking { GetProductImpl()("1") }.shouldBeLeftOfType<ProductNotFound>()
         }
 
         "when id matches a product id use case must return product" {
             val mockProduct: Product = mockk()
             every { mockProductRepository.getProducts() } returns IO { listOf(mockProduct) }
             every { mockProduct.id } returns "1".toOption()
-            runBlocking { GetProductUseCaseImpl()("1") } shouldBeRight mockProduct
+            runBlocking { GetProductImpl()("1") } shouldBeRight mockProduct
         }
     }
 }

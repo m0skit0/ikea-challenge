@@ -18,10 +18,10 @@ import org.m0skit0.android.ikeachallenge.data.repository.mock.ProductRepositoryM
 import org.m0skit0.android.ikeachallenge.domain.ProductRepository
 import org.m0skit0.android.ikeachallenge.log.AndroidLogger
 import org.m0skit0.android.ikeachallenge.log.Logger
-import org.m0skit0.android.ikeachallenge.usecase.GetProductUseCase
-import org.m0skit0.android.ikeachallenge.usecase.GetProductUseCaseImpl
-import org.m0skit0.android.ikeachallenge.usecase.GetProductsUseCase
-import org.m0skit0.android.ikeachallenge.usecase.GetProductsUseCaseImpl
+import org.m0skit0.android.ikeachallenge.usecase.GetProduct
+import org.m0skit0.android.ikeachallenge.usecase.GetProductImpl
+import org.m0skit0.android.ikeachallenge.usecase.GetProducts
+import org.m0skit0.android.ikeachallenge.usecase.GetProductsImpl
 import org.m0skit0.android.ikeachallenge.util.asAsset
 import org.m0skit0.android.ikeachallenge.view.product.detail.ProductDetailFragment
 import org.m0skit0.android.ikeachallenge.view.product.detail.ProductDetailViewModel
@@ -71,8 +71,8 @@ private val repositoryModule = module {
 }
 
 private val useCaseModule = module {
-    single<GetProductsUseCase> { GetProductsUseCaseImpl() }
-    single<GetProductUseCase> { GetProductUseCaseImpl() }
+    single<GetProducts> { GetProductsImpl() }
+    single<GetProduct> { GetProductImpl() }
 }
 
 internal val NAMED_MUTABLE_LIST_PRODUCTS = named("NAMED_MUTABLE_LIST_PRODUCTS")

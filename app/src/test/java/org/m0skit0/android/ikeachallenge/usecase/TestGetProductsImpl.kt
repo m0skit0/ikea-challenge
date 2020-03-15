@@ -14,7 +14,7 @@ import org.m0skit0.android.ikeachallenge.domain.Product
 import org.m0skit0.android.ikeachallenge.domain.ProductRepository
 import java.io.IOException
 
-class TestGetProductsUseCaseImpl : KoinFreeSpec() {
+class TestGetProductsImpl : KoinFreeSpec() {
 
     @MockK
     private lateinit var mockProductRepository: ProductRepository
@@ -31,12 +31,12 @@ class TestGetProductsUseCaseImpl : KoinFreeSpec() {
     init {
         "when product repository throws exception use case must return error" {
             every { mockProductRepository.getProducts() } returns IO { throw IOException() }
-            runBlocking { GetProductsUseCaseImpl()() }.shouldBeLeftOfType<IOException>()
+            runBlocking { GetProductsImpl()() }.shouldBeLeftOfType<IOException>()
         }
 
         "when product repository returns data use case must return data" {
             every { mockProductRepository.getProducts() } returns IO { emptyList<Product>() }
-            runBlocking { GetProductsUseCaseImpl()() } shouldBeRight emptyList()
+            runBlocking { GetProductsImpl()() } shouldBeRight emptyList()
         }
     }
 }

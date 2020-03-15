@@ -20,7 +20,7 @@ import org.m0skit0.android.ikeachallenge.di.NAMED_MUTABLE_BOOLEAN
 import org.m0skit0.android.ikeachallenge.di.NAMED_MUTABLE_ERROR
 import org.m0skit0.android.ikeachallenge.di.NAMED_MUTABLE_LIST_PRODUCTS
 import org.m0skit0.android.ikeachallenge.domain.Product
-import org.m0skit0.android.ikeachallenge.usecase.GetProductsUseCase
+import org.m0skit0.android.ikeachallenge.usecase.GetProducts
 import org.m0skit0.android.ikeachallenge.view.product.grid.ProductListingViewModel
 import org.m0skit0.android.ikeachallenge.view.product.grid.ProductOverview
 import kotlin.coroutines.resume
@@ -29,7 +29,7 @@ import kotlin.coroutines.suspendCoroutine
 class TestProductListingViewModel : KoinFreeSpec() {
 
     @MockK
-    private lateinit var mockGetProductsUseCase: GetProductsUseCase
+    private lateinit var mockGetProductsUseCase: GetProducts
 
     @MockK
     private lateinit var mockMutableListProductOverview: MutableLiveData<List<ProductOverview>>

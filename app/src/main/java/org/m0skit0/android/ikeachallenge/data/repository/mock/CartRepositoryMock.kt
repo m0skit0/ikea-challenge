@@ -1,11 +1,11 @@
-package org.m0skit0.android.ikeachallenge.data.repository
+package org.m0skit0.android.ikeachallenge.data.repository.mock
 
 import arrow.fx.IO
+import org.m0skit0.android.ikeachallenge.data.repository.CartRepositoryImpl
 import org.m0skit0.android.ikeachallenge.domain.CartRepository
 import org.m0skit0.android.ikeachallenge.domain.Product
 
-// TODO Consider persisting in database
-internal class CartRepositoryImpl : CartRepository {
+internal class CartRepositoryMock : CartRepository {
 
     private val cartHolder: MutableMap<Product, Int> = mutableMapOf()
 

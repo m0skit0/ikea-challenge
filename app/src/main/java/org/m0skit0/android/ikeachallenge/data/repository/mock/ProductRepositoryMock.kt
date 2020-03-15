@@ -30,11 +30,4 @@ internal class ProductRepositoryMock : ProductRepository, KoinComponent {
             }
         }
     }
-
-    /**
-     * Uses in-memory cart.
-     */
-    override fun addProductToCart(id: String): IO<Unit> = IO {
-        MockCart.addItem(id)
-    }
 }

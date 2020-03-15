@@ -22,8 +22,4 @@ internal class ProductRepositoryImpl : ProductRepository, KoinComponent {
             }
         }
     }
-
-    override fun addProductToCart(id: String): IO<Unit> {
-        TODO("Implement using a DB to store cart items")
-    }
 }

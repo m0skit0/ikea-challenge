@@ -2,9 +2,6 @@ package org.m0skit0.android.ikeachallenge.domain
 
 import arrow.fx.IO
 
-/**
- * Defines repository for products.
- */
 internal interface ProductRepository {
 
     /**
